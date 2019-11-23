@@ -1,4 +1,4 @@
-import merge from 'webpack-merge';
+const merge = require('webpack-merge');
 import baseConfig from './webpack.config.base';
 
 module.exports = merge(baseConfig, {
@@ -7,6 +7,6 @@ module.exports = merge(baseConfig, {
     open: true,
     publicPath: '/',
     historyApiFallback: true,
-    disableHostCheck: true
-  }
+    disableHostCheck: true,
+  },
 });

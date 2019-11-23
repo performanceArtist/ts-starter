@@ -4,6 +4,10 @@
     "env": {
         "browser": true
     },
+    "parserOptions": {
+      "project": "tsconfig.json",
+      "tsconfigRootDir": "."
+    },
     "rules": {
         "class-methods-use-this": "off",
         "linebreak-style": "off",

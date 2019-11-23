@@ -5,14 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: {
-    app: './src/app.ts'
+    app: './src/app.ts',
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@root': path.resolve(__dirname, 'src'),
-    }
+    },
   },
   optimization: {
     splitChunks: {
@@ -21,37 +21,37 @@ const config = {
           name: 'commons',
           chunks: 'initial',
           minChunks: 2,
-          minSize: 0
-        }
-      }
-    }
+          minSize: 0,
+        },
+      },
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    chunkFilename: '[name].js'
+    chunkFilename: '[name].js',
   },
   module: {
     rules: [
       {
         test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
-        loader: ['ts-loader']
+        loader: ['ts-loader'],
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           'css-loader?url=false',
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.join(__dirname, 'src')]
-            }
-          }
-        ]
+              includePaths: [path.join(__dirname, 'src')],
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)?$/,
@@ -60,23 +60,23 @@ const config = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'images/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: 'images/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/app.html',
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
-    })
-  ]
+      filename: '[name].css',
+    }),
+  ],
 };
 
 export default config;
